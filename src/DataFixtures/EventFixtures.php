@@ -8,7 +8,6 @@
 
 namespace App\DataFixtures;
 
-
 use App\Entity\Event;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -37,7 +36,6 @@ class EventFixtures extends Fixture
         $toto = Faker\Factory::create('fr_FR');
 
         for ($i = 0; $i < 10; $i++) {
-
             $part = new Event();
             $part->setNom(ucwords($toto->sentence));
             $part->setDate($toto->dateTimeBetween('-1 month', '+1 years'));
@@ -45,7 +43,6 @@ class EventFixtures extends Fixture
             $part->setDescription($toto->text);
             $part->setBilan($toto->text);
             $manager->persist($part);
-
         }
         $manager->flush();
     }
