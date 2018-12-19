@@ -1,22 +1,20 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: wilder6
+ * User: wilder2
  * Date: 19/12/18
- * Time: 17:38
+ * Time: 18:47
  */
 
 namespace App\DataFixtures;
 
-use App\Entity\Participants;
+use App\Entity\Event;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
 
-class ParticipantsFixtures extends Fixture
+class EventFixtures extends Fixture
 {
-
     /**
      * This method must return an array of fixtures classes
      * on which the implementing class depends on
@@ -38,13 +36,12 @@ class ParticipantsFixtures extends Fixture
         $toto = Faker\Factory::create('fr_FR');
 
         for ($i = 0; $i < 10; $i++) {
-            $part = new Participants();
-            $part->setNom(mb_strtoupper($toto->lastName));
-            $part->setPrenom(ucwords($toto->firstName));
-            $part->setEntreprise($toto->company);
-            $part->setEmail($toto->companyEmail);
-            $part->setPresence(false);
-
+            $part = new Event();
+            $part->setNom(ucwords($toto->sentence));
+            $part->setDate($toto->dateTimeBetween('-1 month', '+1 years'));
+            $part->setLieu($toto->address);
+            $part->setDescription($toto->text);
+            $part->setBilan($toto->text);
             $manager->persist($part);
         }
         $manager->flush();
