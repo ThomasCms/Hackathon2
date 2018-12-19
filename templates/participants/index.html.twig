@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Participants index{% endblock %}
+
+{% block body %}
+    <h1>Participants index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Entreprise</th>
+                <th>Email</th>
+                <th>Presence</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for participant in participants %}
+            <tr>
+                <td>{{ participant.id }}</td>
+                <td>{{ participant.nom }}</td>
+                <td>{{ participant.prenom }}</td>
+                <td>{{ participant.entreprise }}</td>
+                <td>{{ participant.email }}</td>
+                <td>{{ participant.presence ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('participants_show', {'id': participant.id}) }}">show</a>
+                    <a href="{{ path('participants_edit', {'id': participant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('participants_new') }}">Create new</a>
+{% endblock %}
