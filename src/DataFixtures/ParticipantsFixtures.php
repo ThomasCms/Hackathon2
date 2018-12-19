@@ -38,7 +38,6 @@ class ParticipantsFixtures extends Fixture
         $toto = Faker\Factory::create('fr_FR');
 
         for ($i = 0; $i < 10; $i++) {
-
             $part = new Participants();
             $part->setNom(mb_strtoupper($toto->lastName));
             $part->setPrenom(ucwords($toto->firstName));
@@ -47,7 +46,6 @@ class ParticipantsFixtures extends Fixture
             $part->setPresence(false);
 
             $manager->persist($part);
-
         }
         $manager->flush();
     }
