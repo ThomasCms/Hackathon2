@@ -3,5 +3,26 @@
 @import "~bootswatch/dist/united/bootswatch";
 
 body {
-    background-color: lightgray;
+    margin: 0;
+    font-size: 16pt;
+}
+
+.home {
+    background: url(../images/LABO_2016_exter@Jean_PUYO.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.btnGroup {
+    padding-top: 19vh;
+}
+
+nav {
+    font-weight: bold;
+}
+
+.labo {
+    font-size: 20pt;
 }
