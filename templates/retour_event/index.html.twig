@@ -1,20 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}RetourEvent index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>RetourEvent index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id_evenement</th>
+                <th>Categorie_evenement</th>
+                <th>Date_evenement</th>
+                <th>Explication_evenement</th>
+                <th>Nbre_inscrits_evenement</th>
+                <th>Presents_evenement</th>
+                <th>Nbre_startup_evenement</th>
+                <th>Nbre_partenaire_evenement</th>
+                <th>Nbre_externes_evenement</th>
+                <th>Nbre_pme_evenement</th>
+                <th>Nbre_porteur_projet_evenement</th>
+                <th>Resultat_evenement</th>
+                <th>Liens_formulaires_evenement</th>
+                <th>Suggestion_evenement</th>
+                <th>Taux_satisfaction_evenement</th>
+                <th>Origine_participation_evenement</th>
+                <th>Nbre_mail_invitation_evenement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for retour_event in retour_events %}
+            <tr>
+                <td>{{ retour_event.id }}</td>
+                <td>{{ retour_event.idEvenement }}</td>
+                <td>{{ retour_event.categorieEvenement }}</td>
+                <td>{{ retour_event.dateEvenement ? retour_event.dateEvenement|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ retour_event.explicationEvenement }}</td>
+                <td>{{ retour_event.nbreInscritsEvenement }}</td>
+                <td>{{ retour_event.presentsEvenement }}</td>
+                <td>{{ retour_event.nbreStartupEvenement }}</td>
+                <td>{{ retour_event.nbrePartenaireEvenement }}</td>
+                <td>{{ retour_event.nbreExternesEvenement }}</td>
+                <td>{{ retour_event.nbrePmeEvenement }}</td>
+                <td>{{ retour_event.nbrePorteurProjetEvenement }}</td>
+                <td>{{ retour_event.resultatEvenement }}</td>
+                <td>{{ retour_event.liensFormulairesEvenement }}</td>
+                <td>{{ retour_event.suggestionEvenement }}</td>
+                <td>{{ retour_event.tauxSatisfactionEvenement }}</td>
+                <td>{{ retour_event.origineParticipationEvenement }}</td>
+                <td>{{ retour_event.nbreMailInvitationEvenement }}</td>
+                <td>
+                    <a href="{{ path('retour_event_show', {'id': retour_event.id}) }}">show</a>
+                    <a href="{{ path('retour_event_edit', {'id': retour_event.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/RetourEventController.php'|file_link(0) }}">src/Controller/RetourEventController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/retour_event/index.html.twig'|file_link(0) }}">templates/retour_event/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{ path('retour_event_new') }}">Create new</a>
 {% endblock %}

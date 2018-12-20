@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QuestSat index{% endblock %}
+
+{% block body %}
+    <h1>QuestSat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Origine</th>
+                <th>Satisfaction</th>
+                <th>Prospect</th>
+                <th>Contact</th>
+                <th>Recruter</th>
+                <th>Investisseur</th>
+                <th>Comment</th>
+                <th>Suggestion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quest_sat in quest_sats %}
+            <tr>
+                <td>{{ quest_sat.id }}</td>
+                <td>{{ quest_sat.origine }}</td>
+                <td>{{ quest_sat.satisfaction }}</td>
+                <td>{{ quest_sat.prospect }}</td>
+                <td>{{ quest_sat.contact }}</td>
+                <td>{{ quest_sat.recruter }}</td>
+                <td>{{ quest_sat.investisseur }}</td>
+                <td>{{ quest_sat.comment }}</td>
+                <td>{{ quest_sat.suggestion }}</td>
+                <td>
+                    <a href="{{ path('quest_sat_show', {'id': quest_sat.id}) }}">show</a>
+                    <a href="{{ path('quest_sat_edit', {'id': quest_sat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('quest_sat_new') }}">Create new</a>
+{% endblock %}

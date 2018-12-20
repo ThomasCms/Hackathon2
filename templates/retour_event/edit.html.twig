@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit RetourEvent{% endblock %}
+
+{% block body %}
+    <h1>Edit RetourEvent</h1>
+
+    {{ include('retour_event/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('retour_event_index') }}">back to list</a>
+
+    {{ include('retour_event/_delete_form.html.twig') }}
+{% endblock %}
