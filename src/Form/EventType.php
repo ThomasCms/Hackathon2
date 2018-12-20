@@ -19,15 +19,13 @@ class EventType extends AbstractType
                 'attr' => ['class' => 'form']
             ])
             ->add('date', DateType::class, [
+                'widget' => 'single_text',
                 'attr' => ['class' => 'datepicker']
             ])
             ->add('lieu', TextType::class, [
                     'attr' => ['class' => 'form']
                 ])
             ->add('description', TextareaType::class, [
-                'attr' => ['class' => 'form']
-            ])
-            ->add('bilan', TextareaType::class, [
                 'attr' => ['class' => 'form']
             ])
         ;

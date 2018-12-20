@@ -39,28 +39,19 @@ class Event
     private $description;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $bilan;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Participants", mappedBy="event")
      */
     private $participants;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Player", inversedBy="eventss")
      */
-    private $categorie_evenement;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date_evenement;
+    private $Players;
 
     public function __construct()
     {
         $this->participants = new ArrayCollection();
+        $this->Players = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -159,26 +150,28 @@ class Event
         return $this;
     }
 
-    public function getCategorieEvenement(): ?string
+    /**
+     * @return Collection|Player[]
+     */
+    public function getPlayers(): Collection
     {
-        return $this->categorie_evenement;
+        return $this->Players;
     }
 
-    public function setCategorieEvenement(string $categorie_evenement): self
+    public function addPlayer(Player $player): self
     {
-        $this->categorie_evenement = $categorie_evenement;
+        if (!$this->Players->contains($player)) {
+            $this->Players[] = $player;
+        }
 
         return $this;
     }
 
-    public function getDateEvenement(): ?\DateTimeInterface
+    public function removePlayer(Player $player): self
     {
-        return $this->date_evenement;
-    }
-
-    public function setDateEvenement(\DateTimeInterface $date_evenement): self
-    {
-        $this->date_evenement = $date_evenement;
+        if ($this->Players->contains($player)) {
+            $this->Players->removeElement($player);
+        }
 
         return $this;
     }
