@@ -113,6 +113,9 @@
     "knplabs/knp-paginator-bundle": {
         "version": "v2.8.0"
     },
+    "knplabs/knp-snappy": {
+        "version": "v1.1.0"
+    },
     "knplabs/knp-snappy-bundle": {
         "version": "1.5",
         "recipe": {
