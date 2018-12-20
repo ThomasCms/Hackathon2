@@ -64,3 +64,37 @@ nav {
 }
 
 @keyframes bounce{ from {transform: translateY(0);} to {transform: translateY(-20px);}}
+
+input[type="date"] {
+    position: relative;
+}
+
+input[type="date"]:after {
+    content: "\25BC";
+    color: #555;
+    padding: 0 5px;
+}
+
+input[type="date"]:hover:after {
+    color: #bf1400;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    z-index: 1;
+}
+
+input[type="date"]::-webkit-clear-button {
+    z-index: 1;
+}
