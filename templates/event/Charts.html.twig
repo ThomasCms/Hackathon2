@@ -6,8 +6,9 @@
 
 {% block body %}
     <h1>Events Charts</h1>
+    <div class="row">
+    <div class="offset-5 col-3">
     <canvas id="myChart"></canvas>
-
     <script>
 
         var ctx = document.getElementById('myChart').getContext('2d');
@@ -33,6 +34,8 @@
 
     </script>
 
+    </div>
+    </div>
     <a href="{{ path('event_index') }}">back to list</a>
 
 {% endblock %}
