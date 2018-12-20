@@ -22,7 +22,7 @@ class PlayerController extends AbstractController
     /**
      * @Route("/manager/player/{id}", name="player", requirements={"id"="\d+"}, methods="GET|POST")
      */
-    public function addPlayer(Request $request, Event $event): Response
+    public function addPlayer(Request $request, Event $event, \Swift_Mailer $mailer): Response
     {
         $player = new Player();
         $form = $this->createForm(PlayerType::class, $player);
@@ -42,11 +42,38 @@ class PlayerController extends AbstractController
             return $this->redirectToRoute('player', ['id' => $event->getId()]);
         }
 
-        return $this->render('player/index.html.twig', [
+        foreach ($event->getPlayers() as $users)
+        {
+        $message = (new \Swift_Message('Hello '))
+            ->setFrom('matchmaking.wcs@gmail.com')
+            ->setTo($users->getMail())
+            ->setBody(
+                $this->renderView(
+                // templates/emails/registration.html.twig
+                    'emails/registration.html.twig',
+                    ['user' => $users,
+                        'event' => $event
+                        ]
+                ),
+                'text/html');
+        $mailer->send($message);
+        }
+
+
+            return $this->render('player/index.html.twig', [
             'players' => $event->getPlayers(),
             'form' => $form->createView(),
             'event' => $event
         ]);
+    }
+
+    /**
+     * @Route("/manager/player/{id}", name="mail", requirements={"id"="\d+"}, methods="POST")
+     */
+    public function sendMail(Request $request, Event $event)
+    {
+        $players = $this->getDoctrine()->getRepository(Player::class)
+        ->findBy(['eventss'=> $event->getId()]);
     }
 
     /**
