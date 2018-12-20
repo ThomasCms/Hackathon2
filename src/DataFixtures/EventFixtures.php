@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: wilder2
- * Date: 19/12/18
- * Time: 18:47
+ * Date: 20/12/18
+ * Time: 09:01
  */
 
 namespace App\DataFixtures;
@@ -25,7 +25,6 @@ class EventFixtures extends Fixture
     {
         // TODO: Implement getDependencies() method.
     }
-
     /**
      * Load data fixtures with the passed EntityManager
      *
@@ -34,7 +33,6 @@ class EventFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $toto = Faker\Factory::create('fr_FR');
-
         for ($i = 0; $i < 10; $i++) {
             $part = new Event();
             $part->setNom(ucwords($toto->sentence));
@@ -46,4 +44,5 @@ class EventFixtures extends Fixture
         }
         $manager->flush();
     }
+
 }

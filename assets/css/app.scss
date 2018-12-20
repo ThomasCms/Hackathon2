@@ -3,6 +3,8 @@
 @import "~bootswatch/dist/united/bootswatch";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
+$sectionSpace : 80px;
+
 body {
     margin: 0;
     font-size: 16pt;
@@ -26,4 +28,7 @@ nav {
 
 .labo {
     font-size: 20pt;
+}
+.sectionSpace {
+    margin-top: $sectionSpace;
 }
