@@ -42,24 +42,6 @@ class PlayerController extends AbstractController
             return $this->redirectToRoute('player', ['id' => $event->getId()]);
         }
 
-        foreach ($event->getPlayers() as $users)
-        {
-        $message = (new \Swift_Message('Hello '))
-            ->setFrom('matchmaking.wcs@gmail.com')
-            ->setTo($users->getMail())
-            ->setBody(
-                $this->renderView(
-                // templates/emails/registration.html.twig
-                    'emails/registration.html.twig',
-                    ['user' => $users,
-                        'event' => $event
-                        ]
-                ),
-                'text/html');
-        $mailer->send($message);
-        }
-
-
             return $this->render('player/index.html.twig', [
             'players' => $event->getPlayers(),
             'form' => $form->createView(),
@@ -67,13 +49,36 @@ class PlayerController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/manager/player/{id}", name="mail", requirements={"id"="\d+"}, methods="POST")
+     * @Route("/manager/player/mail/{id}", name="mail", requirements={"id"="\d+"}, methods="GET|POST")
      */
-    public function sendMail(Request $request, Event $event)
+    public function Mail(Request $request, Event $event, \Swift_Mailer $mailer): Response
     {
-        $players = $this->getDoctrine()->getRepository(Player::class)
-        ->findBy(['eventss'=> $event->getId()]);
+        $player = new Player();
+        $form = $this->createForm(PlayerType::class, $player);
+        $form->handleRequest($request);
+
+        foreach ($event->getPlayers() as $users)
+        {
+            $message = (new \Swift_Message('Hello '))
+                ->setFrom('matchmaking.wcs@gmail.com')
+                ->setTo($users->getMail())
+                ->setBody(
+                    $this->renderView(
+                    // templates/emails/registration.html.twig
+                        'emails/registration.html.twig',
+                        ['user' => $users,
+                            'event' => $event
+                        ]
+                    ),
+                    'text/html');
+            $mailer->send($message);
+        }
+
+
+        return $this->redirectToRoute('player', ['id' => $event->getId()]);
+
     }
 
     /**
