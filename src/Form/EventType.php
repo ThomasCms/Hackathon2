@@ -28,9 +28,6 @@ class EventType extends AbstractType
             ->add('description', TextareaType::class, [
                 'attr' => ['class' => 'form']
             ])
-            ->add('bilan', TextareaType::class, [
-                'attr' => ['class' => 'form']
-            ])
         ;
     }
 

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Gestion des participants
+{% endblock %}
+{% block body %}
+
+    <div class="event_players container">
+        <h1 class="text-center">Gestion des participants</h1>
+        <h2 class="text-center pt-1">{{ event.date|date('d M Y') }}
+        <hr />
+        {{ event.nom }}</h2>
+        <p class="pt-2"><strong><u>Gestion participants</u></strong></p>
+        <p>
+            <div class="row">
+                <div class="col">
+                    Ajouter un participant
+                </div>
+            </div>
+        </p>
+        <div>
+            {{ include('player/_formPlayer.html.twig') }}
+            <hr/>
+        </div>
+<div class="row"></div>
+<div class="row"></div>
+        {% for player in players %}
+        <div class="row players align-items-center mb-3">
+            <div class="col-sm-4 col-xs-12">
+                    <span class="icn"><i class="fas fa-user"></i></span>{{ player.firstname }}  {{ player.name }}
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                    <span class="icn"><i class="fas fa-envelope"></i></span>{{ player.mail }}
+            </div>
+             <div class="offset-3 col-sm-1 col-xs-12">
+                 <form method="post" action="{{ path('player_delete', {'id': player.id}) }}"
+                       onsubmit="return confirm('Etes vous sûr de vouloir supprimer ce participant ?');">
+                     <input type="hidden" name="_method" value="DELETE">
+                     <input type="hidden" name="event_id" value="{{ event.id }}">
+                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ player.id) }}">
+                     <button class="listButton btn">Supprimer</button>
+                 </form>
+             </div>
+        </div>
+        {% endfor %}
+        <div class="d-100">
+            <a class="btn btn btn-primary btn-lg btn-block" data-toggle="collapse" href="" role="button" aria-expanded="false">
+                <i class="fas fa-play"></i> Lancer les emails
+            </a>
+        </div>
+    </div>
+{% endblock %}
