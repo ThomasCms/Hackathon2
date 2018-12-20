@@ -5,9 +5,34 @@
 
 $sectionSpace : 80px;
 
-body {
+@font-face {
+    font-family: "body";
+    src: url('../../assets/fonts/Acme-Regular.ttf');
+    src: url('../../assets/fonts/Acme-Regular.ttf') format("opentype");
+}
+
+@font-face {
+    font-family: "titles";
+    src: url('../../assets/fonts/Ubuntu-Regular.ttf');
+    src: url('../../assets/fonts/Ubuntu-Regular.ttf') format("opentype"),
+    url('../../assets/fonts/Ubuntu-Medium.ttf') format("opentype"),
+    url('../../assets/fonts/Ubuntu-MediumItalic.ttf') format("opentype"),
+    url('../../assets/fonts/Ubuntu-Bold.ttf') format("opentype"),
+    url('../../assets/fonts/Ubuntu-BoldItalic.ttf') format("opentype"),
+    url('../../assets/fonts/Ubuntu-Light.ttf') format("opentype"),
+    url('../../assets/fonts/Ubuntu-LightItalic.ttf') format("opentype"),
+    url('../../assets/fonts/Ubuntu-Italic.ttf') format("opentype");
+}
+
+
+body, nav {
     margin: 0;
     font-size: 16pt;
+    font-family: body, serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: titles, serif;
 }
 
 .home {
