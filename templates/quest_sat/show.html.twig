@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QuestSat{% endblock %}
+
+{% block body %}
+    <h1>QuestSat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ quest_sat.id }}</td>
+            </tr>
+            <tr>
+                <th>Origine</th>
+                <td>{{ quest_sat.origine }}</td>
+            </tr>
+            <tr>
+                <th>Satisfaction</th>
+                <td>{{ quest_sat.satisfaction }}</td>
+            </tr>
+            <tr>
+                <th>Prospect</th>
+                <td>{{ quest_sat.prospect }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ quest_sat.contact }}</td>
+            </tr>
+            <tr>
+                <th>Recruter</th>
+                <td>{{ quest_sat.recruter }}</td>
+            </tr>
+            <tr>
+                <th>Investisseur</th>
+                <td>{{ quest_sat.investisseur }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ quest_sat.comment }}</td>
+            </tr>
+            <tr>
+                <th>Suggestion</th>
+                <td>{{ quest_sat.suggestion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('quest_sat_index') }}">back to list</a>
+
+    <a href="{{ path('quest_sat_edit', {'id': quest_sat.id}) }}">edit</a>
+
+    {{ include('quest_sat/_delete_form.html.twig') }}
+{% endblock %}
