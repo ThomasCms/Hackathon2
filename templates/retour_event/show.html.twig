@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RetourEvent{% endblock %}
+
+{% block body %}
+    <h1>RetourEvent</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ retour_event.id }}</td>
+            </tr>
+            <tr>
+                <th>Id_evenement</th>
+                <td>{{ retour_event.idEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Categorie_evenement</th>
+                <td>{{ retour_event.categorieEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Date_evenement</th>
+                <td>{{ retour_event.dateEvenement ? retour_event.dateEvenement|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Explication_evenement</th>
+                <td>{{ retour_event.explicationEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Nbre_inscrits_evenement</th>
+                <td>{{ retour_event.nbreInscritsEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Presents_evenement</th>
+                <td>{{ retour_event.presentsEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Nbre_startup_evenement</th>
+                <td>{{ retour_event.nbreStartupEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Nbre_partenaire_evenement</th>
+                <td>{{ retour_event.nbrePartenaireEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Nbre_externes_evenement</th>
+                <td>{{ retour_event.nbreExternesEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Nbre_pme_evenement</th>
+                <td>{{ retour_event.nbrePmeEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Nbre_porteur_projet_evenement</th>
+                <td>{{ retour_event.nbrePorteurProjetEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Resultat_evenement</th>
+                <td>{{ retour_event.resultatEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Liens_formulaires_evenement</th>
+                <td>{{ retour_event.liensFormulairesEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Suggestion_evenement</th>
+                <td>{{ retour_event.suggestionEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Taux_satisfaction_evenement</th>
+                <td>{{ retour_event.tauxSatisfactionEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Origine_participation_evenement</th>
+                <td>{{ retour_event.origineParticipationEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Nbre_mail_invitation_evenement</th>
+                <td>{{ retour_event.nbreMailInvitationEvenement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('retour_event_index') }}">back to list</a>
+
+    <a href="{{ path('retour_event_edit', {'id': retour_event.id}) }}">edit</a>
+
+    {{ include('retour_event/_delete_form.html.twig') }}
+{% endblock %}
