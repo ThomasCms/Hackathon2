@@ -17,7 +17,6 @@ class EventType extends AbstractType
             ->add('lieu')
             ->add('description')
             ->add('bilan')
-            ->add('participants')
         ;
     }
 

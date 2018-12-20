@@ -44,7 +44,7 @@ class Event
     private $bilan;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Participants", inversedBy="events")
+     * @ORM\OneToMany(targetEntity="App\Entity\Participants", mappedBy="event")
      */
     private $participants;
 
@@ -130,6 +130,7 @@ class Event
     {
         if (!$this->participants->contains($participant)) {
             $this->participants[] = $participant;
+            $participant->setEvent($this);
         }
 
         return $this;
@@ -139,6 +140,10 @@ class Event
     {
         if ($this->participants->contains($participant)) {
             $this->participants->removeElement($participant);
+            // set the owning side to null (unless already changed)
+            if ($participant->getEvent() === $this) {
+                $participant->setEvent(null);
+            }
         }
 
         return $this;
