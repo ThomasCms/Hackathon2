@@ -48,6 +48,16 @@ class Event
      */
     private $participants;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $categorie_evenement;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_evenement;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -145,6 +155,30 @@ class Event
                 $participant->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategorieEvenement(): ?string
+    {
+        return $this->categorie_evenement;
+    }
+
+    public function setCategorieEvenement(string $categorie_evenement): self
+    {
+        $this->categorie_evenement = $categorie_evenement;
+
+        return $this;
+    }
+
+    public function getDateEvenement(): ?\DateTimeInterface
+    {
+        return $this->date_evenement;
+    }
+
+    public function setDateEvenement(\DateTimeInterface $date_evenement): self
+    {
+        $this->date_evenement = $date_evenement;
 
         return $this;
     }
