@@ -17,7 +17,6 @@ class PlayerType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('firstname', TextType::class)
-            ->add('phoneNumber', TelType::class, ['attr' => ['maxlength' => 10]])
             ->add('mail', EmailType::class)
         ;
     }
