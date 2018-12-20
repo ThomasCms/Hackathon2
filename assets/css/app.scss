@@ -98,3 +98,7 @@ input[type="date"]::-webkit-inner-spin-button {
 input[type="date"]::-webkit-clear-button {
     z-index: 1;
 }
+
+.calendrier, .affichage, .lancement {
+    height: 6vh;
+}
