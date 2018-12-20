@@ -102,4 +102,12 @@ class PlayerController extends AbstractController
 
         return $this->redirectToRoute('player', ['id' => $event]);
     }
+
+    /**
+     * @Route("/camembert/{id}", name="camembert", methods={"GET"})
+     */
+    public function index(Event $event)
+    {
+        return $this->render('event/camembert.html.twig');
+    }
 }
