@@ -34,7 +34,6 @@ $sectionSpace : 80px;
     url('../../assets/fonts/Roboto-LightItalic.ttf') format("opentype");
 }
 
-
 body, nav {
     margin: 0;
     font-size: 16pt;
@@ -111,4 +110,8 @@ input[type="date"]::-webkit-clear-button {
 
 .calendrier, .affichage, .lancement {
     height: 6vh;
+}
+
+.spacebetween {
+    width: 4vw;
 }
