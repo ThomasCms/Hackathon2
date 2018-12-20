@@ -32,3 +32,10 @@ nav {
 .sectionSpace {
     margin-top: $sectionSpace;
 }
+
+.rebondisstp {
+    display: inline-block;
+    animation: bounce 0.35s ease infinite alternate;
+}
+
+@keyframes bounce{ from {transform: translateY(0);} to {transform: translateY(-20px);}}
