@@ -39,11 +39,6 @@ class Event
     private $description;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $bilan;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Participants", mappedBy="event")
      */
     private $participants;

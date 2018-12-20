@@ -4,6 +4,8 @@
 
 {% block body %}
     <h1>Event index</h1>
+    <div class="mt-5"></div>
+    <a class="mt-5" href="{{ path('event_new') }}">Création d'un évènement</a>
 
     <table class="table">
         <thead>
@@ -13,8 +15,8 @@
                 <th>Date</th>
                 <th>Lieu</th>
                 <th>Description</th>
-                <th>Bilan</th>
                 <th>actions</th>
+                <th>Bilan</th>
             </tr>
         </thead>
         <tbody>
@@ -25,10 +27,13 @@
                 <td>{{ event.date ? event.date|date('d M Y') : '' }}</td>
                 <td>{{ event.lieu }}</td>
                 <td>{{ event.description }}</td>
-                <td>{{ event.bilan }}</td>
+                <td class="row">
+                    <a href="{{ path('event_edit', {'id': event.id}) }}">Edition</a>
+                    <div> / </div>
+                    <a href="{{ path('player', {'id': event.id}) }}">Lancement</a>
+                </td>
                 <td>
-                    <a href="{{ path('event_show', {'id': event.id}) }}">show</a>
-                    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+                    <a href="{{ path('player', {'id': event.id}) }}">Afficher</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +44,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('event_new') }}">Create new</a>
 {% endblock %}
