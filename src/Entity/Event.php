@@ -48,9 +48,15 @@ class Event
      */
     private $participants;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Player", inversedBy="eventss")
+     */
+    private $Players;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
+        $this->Players = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -144,6 +150,32 @@ class Event
             if ($participant->getEvent() === $this) {
                 $participant->setEvent(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Player[]
+     */
+    public function getPlayers(): Collection
+    {
+        return $this->Players;
+    }
+
+    public function addPlayer(Player $player): self
+    {
+        if (!$this->Players->contains($player)) {
+            $this->Players[] = $player;
+        }
+
+        return $this;
+    }
+
+    public function removePlayer(Player $player): self
+    {
+        if ($this->Players->contains($player)) {
+            $this->Players->removeElement($player);
         }
 
         return $this;

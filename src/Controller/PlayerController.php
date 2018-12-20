@@ -29,7 +29,7 @@ class PlayerController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $player->addEvent($event);
+            $player->addEventss($event);
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();
@@ -43,7 +43,7 @@ class PlayerController extends AbstractController
         }
 
         return $this->render('player/index.html.twig', [
-            'players' => $event->getParticipants(),
+            'players' => $event->getPlayers(),
             'form' => $form->createView(),
             'event' => $event
         ]);
