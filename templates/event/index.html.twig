@@ -22,7 +22,7 @@
             <tr>
                 <td>{{ event.id }}</td>
                 <td>{{ event.nom }}</td>
-                <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ event.date ? event.date|date('d M Y') : '' }}</td>
                 <td>{{ event.lieu }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.bilan }}</td>
