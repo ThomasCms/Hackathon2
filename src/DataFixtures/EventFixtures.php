@@ -2,12 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: wilder2
- * Date: 19/12/18
- * Time: 18:47
+ * Date: 20/12/18
+ * Time: 09:01
  */
 
 namespace App\DataFixtures;
-
 
 use App\Entity\Event;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -26,7 +25,6 @@ class EventFixtures extends Fixture
     {
         // TODO: Implement getDependencies() method.
     }
-
     /**
      * Load data fixtures with the passed EntityManager
      *
@@ -35,9 +33,7 @@ class EventFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $toto = Faker\Factory::create('fr_FR');
-
         for ($i = 0; $i < 10; $i++) {
-
             $part = new Event();
             $part->setNom(ucwords($toto->sentence));
             $part->setDate($toto->dateTimeBetween('-1 month', '+1 years'));
@@ -45,8 +41,8 @@ class EventFixtures extends Fixture
             $part->setDescription($toto->text);
             $part->setBilan($toto->text);
             $manager->persist($part);
-
         }
         $manager->flush();
     }
+
 }

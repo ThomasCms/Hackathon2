@@ -44,9 +44,10 @@ class Participants
     private $presence;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Event", mappedBy="participants")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="participants")
      */
-    private $events;
+    private $event;
+
 
     public function __construct()
     {
@@ -118,31 +119,16 @@ class Participants
         return $this;
     }
 
-    /**
-     * @return Collection|Event[]
-     */
-    public function getEvents(): Collection
+    public function getEvent(): ?Event
     {
-        return $this->events;
+        return $this->event;
     }
 
-    public function addEvent(Event $event): self
+    public function setEvent(?Event $event): self
     {
-        if (!$this->events->contains($event)) {
-            $this->events[] = $event;
-            $event->addParticipant($this);
-        }
+        $this->event = $event;
 
         return $this;
     }
 
-    public function removeEvent(Event $event): self
-    {
-        if ($this->events->contains($event)) {
-            $this->events->removeElement($event);
-            $event->removeParticipant($this);
-        }
-
-        return $this;
-    }
 }
