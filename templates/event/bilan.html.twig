@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <main class="container-fluid home">
+        <div class="d-flex align-items-center flex-column">
+
+
+            <div class="text-center btnGroup row">
+                <a href="{{ path('camembert2', {'id': event.id}) }}">
+                    <button type="button" class="btn btn-dark bigButton"><h1>Qualité des personnes présentes</h1></button>
+                </a>
+                </div>
+                <div class="spacebetween"></div>
+                <div class="justify-content-center mt-5">
+                <a href="{{ path('camembert', {'id': event.id}) }}">
+                    <button type="button" class="btn btn-warning bigButton"><h1>Mise en relation</h1></button>
+                </a>
+                </div>
+
+
+                <div class="spacebetween"></div>
+            <div class="mt-5">
+                <div class="justify-content-center">
+                <a href="{{ path('camembert3', {'id': event.id}) }}">
+                    <button type="button" class="btn btn-primary bigButton"><h1>Bilan évènement</h1></button>
+                </a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

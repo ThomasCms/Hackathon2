@@ -1,39 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Event index{% endblock %}
-
 {% block body %}
     <h1>Event index</h1>
     <div class="mt-5"></div>
-    <h2 style="font-size: 50px"><a class="mt-5" href="{{ path('event_new') }}"><button type="button" class="btn btn-primary">Création d'un évènement</button></a>
+    <h2 style="font-size: 50px"><a class="mt-5" href="{{ path('event_new') }}"><img src="/images/hacka2.png" class="calendrier" alt="calendrier-logo"> Création d'un évènement</a>
     </h2>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
         <tr>
-            <th>Id</th>
             <th>Nom</th>
             <th>Date</th>
             <th>Lieu</th>
             <th>Description</th>
-            <th>actions</th>
+            <th>Action</th>
             <th>Bilan</th>
         </tr>
         </thead>
         <tbody>
         {% for event in events %}
             <tr>
-                <td>{{ event.id }}</td>
                 <td>{{ event.nom }}</td>
                 <td>{{ event.date ? event.date|date('d M Y') : '' }}</td>
                 <td>{{ event.lieu }}</td>
                 <td>{{ event.description }}</td>
                 <td class="row">
-                    <a href="{{ path('event_edit', {'id': event.id}) }}">Edition</a>
-                    <div> /</div>
-                    <a href="{{ path('player', {'id': event.id}) }}">Lancement</a>
+                    <a href="{{ path('player', {'id': event.id}) }}"><img src="/images/hacka2.2.png" class="lancement" alt="logo-lancement"></a>
                 </td>
                 <td>
-                    <a href="#">Afficher</a>
+                    <a href="{{ path('resultats', {'id': event.id}) }}"><img src="/images/hacka2.1.png" class="affichage" alt="logo-affichage"></a>
+
                 </td>
             </tr>
         {% else %}

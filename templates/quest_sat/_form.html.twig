@@ -1,4 +1,29 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+<div class = "container">
+    <div>
+    {{ form_row(form.origine) }}
+    </div>
+    <div>
+    {{ form_row(form.satisfaction) }}
+    </div>
+    <div>
+    {{ form_row(form.prospect) }}
+    </div>
+    <div>
+    {{ form_row(form.contact) }}
+    </div>
+    <div>
+    {{ form_row(form.recruter) }}
+    </div>
+    <div>
+    {{ form_row(form.investisseur) }}
+    </div>
+    <div>
+    {{ form_row(form.comment) }}
+    </div>
+    <div>
+    {{ form_row(form.suggestion) }}
+    </div>
+</div>
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
