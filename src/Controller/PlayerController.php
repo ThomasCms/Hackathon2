@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Entity\Player;
+use App\Entity\QuestSat;
 use App\Form\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -62,7 +63,7 @@ class PlayerController extends AbstractController
         foreach ($event->getPlayers() as $users)
         {
             $message = (new \Swift_Message('Hello '))
-                ->setFrom('matchmaking.wcs@gmail.com')
+                ->setFrom('presentationlabo@gmail.com')
                 ->setTo($users->getMail())
                 ->setBody(
                     $this->renderView(
@@ -105,9 +106,12 @@ class PlayerController extends AbstractController
 
     /**
      * @Route("/camembert/{id}", name="camembert", methods={"GET"})
+     * @param Event $event
+     * @return Response
      */
-    public function index(Event $event)
+    public function index(Event $event, QuestSat $stats)
     {
-        return $this->render('event/camembert.html.twig');
+
+        return $this->render('event/camembert.html.twig', ['stats' => $stats]);
     }
 }
