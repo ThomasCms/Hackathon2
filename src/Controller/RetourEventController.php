@@ -34,12 +34,13 @@ class RetourEventController extends AbstractController
      */
     public function pdfAction(Pdf $knpSnappyPdf)
     {
+        $reporting = 'Reporting_du_';
         /* creating the pdf from html page */
         $html = $this->renderView('retour_event/resultatPdf.html.twig');
 
         return new PdfResponse(
             $knpSnappyPdf->getOutputFromHtml($html, ['user-style-sheet' => ['./build/app.css',],]),
-            date("d-m-Y") . '.pdf'
+            $reporting . date("d-m-Y") . '.pdf'
         );
     }
 
