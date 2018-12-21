@@ -77,7 +77,7 @@ class PlayerController extends AbstractController
         }
 
 
-        return $this->redirectToRoute('player', ['id' => $event->getId()]);
+        return $this->redirectToRoute('event_index');
 
     }
 
