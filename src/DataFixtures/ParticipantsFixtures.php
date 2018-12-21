@@ -27,8 +27,7 @@ class ParticipantsFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [EventFixtures::class];
-
-                }
+    }
 
     /**
      * Load data fixtures with the passed EntityManager
@@ -47,7 +46,7 @@ class ParticipantsFixtures extends Fixture implements DependentFixtureInterface
             $part->setmail($toto->companyEmail);
 
             $manager->persist($part);
-            $part->addEventss($this->getReference('event_' .rand(0,9)));
+            $part->addEventss($this->getReference('event_' . rand(0, 9)));
         }
         $manager->flush();
     }

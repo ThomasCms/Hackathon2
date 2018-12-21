@@ -26,6 +26,7 @@ class QuestSatFixtures extends Fixture
     {
         // TODO: Implement getDependencies() method.
     }
+
     /**
      * Load data fixtures with the passed EntityManager
      *
@@ -37,16 +38,15 @@ class QuestSatFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $part = new QuestSat();
             $part->setOrigine(ucwords($toto->text(20)));
-            $part->setSatisfaction($toto->numberBetween(0,10));
-            $part->setProspect($toto->numberBetween(0,10));
-            $part->setContact($toto->numberBetween(0,10));
-            $part->setRecruter($toto->numberBetween(0,10));
-            $part->setInvestisseur($toto->numberBetween(0,10));
+            $part->setSatisfaction($toto->numberBetween(0, 10));
+            $part->setProspect($toto->numberBetween(0, 10));
+            $part->setContact($toto->numberBetween(0, 10));
+            $part->setRecruter($toto->numberBetween(0, 10));
+            $part->setInvestisseur($toto->numberBetween(0, 10));
             $part->setComment($toto->text(20));
             $part->setSuggestion($toto->text(20));
             $manager->persist($part);
         }
         $manager->flush();
     }
-
 }

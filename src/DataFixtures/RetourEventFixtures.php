@@ -25,7 +25,9 @@ class RetourEventFixtures extends Fixture
             $product->setNbreExternesEvenement($toto->numberBetween(1, 10));
             $product->setNbrePmeEvenement($toto->numberBetween(1, 10));
             $product->setNbrePorteurProjetEvenement($toto->numberBetween(1, 10));
-            $product->setPresentsEvenement($product->getNbreExternesEvenement()+$product->getNbrePartenaireEvenement()+$product->getNbrePmeEvenement()+$product->getNbrePorteurProjetEvenement()+$product->getNbreStartupEvenement());
+            $product->setPresentsEvenement($product->getNbreExternesEvenement() +
+                $product->getNbrePartenaireEvenement() + $product->getNbrePmeEvenement() +
+                $product->getNbrePorteurProjetEvenement() + $product->getNbreStartupEvenement());
             $product->setResultatEvenement($toto->text(10));
             $product->setLiensFormulairesEvenement($toto->text(10));
             $product->setOrigineParticipationEvenement($toto->text(10));
