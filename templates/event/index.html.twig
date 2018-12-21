@@ -1,11 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Event index{% endblock %}
-
 {% block body %}
     <h1>Event index</h1>
     <div class="mt-5"></div>
-    <h2 style="font-size: 50px"><a class="mt-5" href="{{ path('event_new') }}"><img src="/build/images/hacka2.png" class="calendrier" alt="calendrier-logo"> Création d'un évènement</a>
+    <h2 style="font-size: 50px"><a class="mt-5" href="{{ path('event_new') }}"><img src="/images/hacka2.png" class="calendrier" alt="calendrier-logo"> Création d'un évènement</a>
     </h2>
     <table class="table table-striped">
         <thead>
@@ -30,6 +28,10 @@
                 </td>
                 <td>
                     <a href="{{ path('bilan', {'id': event.id}) }}"><img src="/build/images/hacka2.1.png" class="affichage" alt="logo-affichage"></a>
+                </td>
+                <td>
+                    <a href="{{ path('resultats', {'id': event.id}) }}"><img src="/build/images/hacka2.1.png" class="affichage" alt="logo-affichage"></a>
+
                 </td>
             </tr>
         {% else %}

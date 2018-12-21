@@ -34,7 +34,7 @@
                 // The data for our dataset
                 data: {
 
-                    labels: ["Inscrit", "Présent", "Absent", "Satisfaction", 'Nombre d\'invitation'],
+                    labels: ["Inscrit", "Présent", "Absent", "Satisfaction", 'Nombre d\'invitation', 'Note évènement'],
                     datasets: [{
                         label: "My First dataset",
                         backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
@@ -45,6 +45,8 @@
                             {{ retour.nbreinscritsevenement }}-{{ retour.presentsevenement }},
                             {{ retour.tauxsatisfactionevenement }},
                             {{ retour.nbremailinvitationevenement }},
+                            {{ retour.tauxsatisfactionevenement/10 }},
+
                         ],
                     }]
                 },
