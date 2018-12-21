@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\RetourEvent;
 use App\Form\RetourEventType;
+use App\Repository\AnnualResult;
 use App\Repository\RetourEventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -86,5 +87,16 @@ class RetourEventController extends AbstractController
         }
 
         return $this->redirectToRoute('retour_event_index');
+    }
+
+    /**
+     * @Route("/resultat", name="retour_event_resultat")
+     */
+    public function getGraphic(AnnualResult $annualResult, RetourEventRepository $retourEventRepository) :AnnualResult
+    {
+        $total = $retourEventRepository->findAll();
+        $total->getJanvierResult();
+
+        return $this->render('/resultat.html.twig');
     }
 }
