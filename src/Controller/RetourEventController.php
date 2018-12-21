@@ -6,6 +6,8 @@ use App\Entity\RetourEvent;
 use App\Form\RetourEventType;
 use App\Repository\AnnualResult;
 use App\Repository\RetourEventRepository;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +25,22 @@ class RetourEventController extends AbstractController
     {
 
         return $this->render('retour_event/resultats.html.twig');
+    }
+
+    /**
+     * @Route("/export-pdf", name="pdf_export")
+     * @param Pdf $knpSnappyPdf
+     * @return PdfResponse
+     */
+    public function pdfAction(Pdf $knpSnappyPdf)
+    {
+        /* creating the pdf from html page */
+        $html = $this->renderView('retour_event/resultatPdf.html.twig');
+
+        return new PdfResponse(
+            $knpSnappyPdf->getOutputFromHtml($html, ['user-style-sheet' => ['./build/app.css',],]),
+            date("d-m-Y") . '.pdf'
+        );
     }
 
     /**
@@ -97,7 +115,4 @@ class RetourEventController extends AbstractController
 
         return $this->redirectToRoute('retour_event_index');
     }
-
-
-
 }
