@@ -5,35 +5,31 @@
 {% block body %}
     <h1>RetourEvent index</h1>
 
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Id_evenement</th>
-                <th>Categorie_evenement</th>
-                <th>Date_evenement</th>
-                <th>Explication_evenement</th>
-                <th>Nbre_inscrits_evenement</th>
-                <th>Presents_evenement</th>
-                <th>Nbre_startup_evenement</th>
-                <th>Nbre_partenaire_evenement</th>
-                <th>Nbre_externes_evenement</th>
-                <th>Nbre_pme_evenement</th>
-                <th>Nbre_porteur_projet_evenement</th>
-                <th>Resultat_evenement</th>
-                <th>Liens_formulaires_evenement</th>
-                <th>Suggestion_evenement</th>
-                <th>Taux_satisfaction_evenement</th>
-                <th>Origine_participation_evenement</th>
-                <th>Nbre_mail_invitation_evenement</th>
-                <th>actions</th>
+                <th>Categorie d'évènement</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Nbre d'inscrits</th>
+                <th>Nbre présents</th>
+                <th>Nbre startup</th>
+                <th>Nbre partenaire</th>
+                <th>Nbre externes</th>
+                <th>Nbre pme</th>
+                <th>Nbre porteur_projet</th>
+                <th>Résultats</th>
+                <th>Liens formulaires</th>
+                <th>Suggestion</th>
+                <th>Taux satisfaction</th>
+                <th>Origine participation</th>
+                <th>Nbre_mail invitation</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for retour_event in retour_events %}
             <tr>
-                <td>{{ retour_event.id }}</td>
-                <td>{{ retour_event.idEvenement }}</td>
                 <td>{{ retour_event.categorieEvenement }}</td>
                 <td>{{ retour_event.dateEvenement ? retour_event.dateEvenement|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ retour_event.explicationEvenement }}</td>
@@ -63,5 +59,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('retour_event_new') }}">Create new</a>
+    <a href="{{ path('retour_event_new') }}">Créer un nouveau reporting</a>
 {% endblock %}

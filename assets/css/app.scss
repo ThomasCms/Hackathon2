@@ -5,9 +5,43 @@
 
 $sectionSpace : 80px;
 
-body {
+@font-face {
+    font-family: "body";
+    src: url('../../assets/fonts/OpenSans-Regular.ttf');
+    src: url('../../assets/fonts/OpenSans-Regular.ttf') format("opentype"),
+    url('../../assets/fonts/OpenSans-SemiBold.ttf') format("opentype"),
+    url('../../assets/fonts/OpenSans-SemiBoldItalic.ttf') format("opentype"),
+    url('../../assets/fonts/OpenSans-Bold.ttf') format("opentype"),
+    url('../../assets/fonts/OpenSans-BoldItalic.ttf') format("opentype"),
+    url('../../assets/fonts/OpenSans-Light.ttf') format("opentype"),
+    url('../../assets/fonts/OpenSans-LightItalic.ttf') format("opentype"),
+    url('../../assets/fonts/OpenSans-ExtraBold.ttf') format("opentype"),
+    url('../../assets/fonts/OpenSans-ExtraBoldItalic.ttf') format("opentype");
+}
+
+@font-face {
+    font-family: "titles";
+    src: url('../../assets/fonts/Roboto-Regular.ttf');
+    src: url('../../assets/fonts/Roboto-Regular.ttf') format("opentype"),
+    url('../../assets/fonts/Roboto-Black.ttf') format("opentype"),
+    url('../../assets/fonts/Roboto-BlackItalic.ttf') format("opentype"),
+    url('../../assets/fonts/Roboto-BlackItalic.ttf') format("opentype"),
+    url('../../assets/fonts/Roboto-Bold.ttf') format("opentype"),
+    url('../../assets/fonts/Roboto-Medium.ttf') format("opentype"),
+    url('../../assets/fonts/Roboto-MediumItalic.ttf') format("opentype"),
+    url('../../assets/fonts/Roboto-BoldItalic.ttf') format("opentype"),
+    url('../../assets/fonts/Roboto-Light.ttf') format("opentype"),
+    url('../../assets/fonts/Roboto-LightItalic.ttf') format("opentype");
+}
+
+body, nav {
     margin: 0;
     font-size: 16pt;
+    font-family: body, serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: titles, serif;
 }
 
 .home {
@@ -39,3 +73,45 @@ nav {
 }
 
 @keyframes bounce{ from {transform: translateY(0);} to {transform: translateY(-20px);}}
+
+input[type="date"] {
+    position: relative;
+}
+
+input[type="date"]:after {
+    content: "\25BC";
+    color: #555;
+    padding: 0 5px;
+}
+
+input[type="date"]:hover:after {
+    color: #bf1400;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    z-index: 1;
+}
+
+input[type="date"]::-webkit-clear-button {
+    z-index: 1;
+}
+
+.calendrier, .affichage, .lancement {
+    height: 6vh;
+}
+
+.spacebetween {
+    width: 4vw;
+}
