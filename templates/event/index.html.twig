@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="container">
     <h1>Event index</h1>
     <div class="mt-5"></div>
     <h2 style="font-size: 50px"><a class="mt-5" href="{{ path('event_new') }}"><img src="/images/hacka2.png" class="calendrier" alt="calendrier-logo"> Création d'un évènement</a>
@@ -38,5 +39,5 @@
         {% endfor %}
         </tbody>
     </table>
-
+</div>
 {% endblock %}
