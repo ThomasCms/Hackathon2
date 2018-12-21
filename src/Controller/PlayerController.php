@@ -44,13 +44,12 @@ class PlayerController extends AbstractController
             return $this->redirectToRoute('player', ['id' => $event->getId()]);
         }
 
-            return $this->render('player/index.html.twig', [
+        return $this->render('player/index.html.twig', [
             'players' => $event->getPlayers(),
             'form' => $form->createView(),
             'event' => $event
         ]);
     }
-
 
     /**
      * @Route("/manager/player/mail/{id}", name="mail", requirements={"id"="\d+"}, methods="GET|POST")
@@ -61,8 +60,7 @@ class PlayerController extends AbstractController
         $form = $this->createForm(PlayerType::class, $player);
         $form->handleRequest($request);
 
-        foreach ($event->getPlayers() as $users)
-        {
+        foreach ($event->getPlayers() as $users) {
             $message = (new \Swift_Message('Hello '))
                 ->setFrom('presentationlabo@gmail.com')
                 ->setTo($users->getMail())
@@ -70,7 +68,8 @@ class PlayerController extends AbstractController
                     $this->renderView(
                     // templates/emails/registration.html.twig
                         'emails/registration.html.twig',
-                        ['user' => $users,
+                        [
+                            'user' => $users,
                             'event' => $event
                         ]
                     ),
@@ -80,7 +79,6 @@ class PlayerController extends AbstractController
 
 
         return $this->redirectToRoute('event_index');
-
     }
 
     /**
@@ -134,7 +132,6 @@ class PlayerController extends AbstractController
     public function bilan(Event $event)
     {
         return $this->render('event/bilan.html.twig', ['event' => $event]);
-
     }
 
     /**

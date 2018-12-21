@@ -24,9 +24,8 @@ class RetourEventController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function resultats( Event $event, Request $request, RetourEvent $retourEvent): Response
+    public function resultats(Event $event, Request $request, RetourEvent $retourEvent) : Response
     {
-
         return $this->render('retour_event/resultats.html.twig', ['event' => $event, 'retour' => $retourEvent]);
     }
 

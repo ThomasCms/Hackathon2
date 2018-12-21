@@ -47,13 +47,13 @@ class QuestSatType extends AbstractType
                 '9' => '9',
                 '10' => '10',
             ],
-        'label' => "Combien avez-vous trouvé de prospects ?",
+            'label' => "Combien avez-vous trouvé de prospects ?",
         ]);
         $builder->add('origine', TextType::class, [
 
-        'label' => "Comment avez-vous eu connaissance de cet évènement ?",
+            'label' => "Comment avez-vous eu connaissance de cet évènement ?",
         ]);
-        $builder->add('contact',ChoiceType::class, [
+        $builder->add('contact', ChoiceType::class, [
             'choices' => [
                 '0' => '0',
                 '1' => '1',
@@ -67,7 +67,7 @@ class QuestSatType extends AbstractType
                 '9' => '9',
                 '10' => '10',
             ],
-        'label' => "Combien de contact avez-vous trouvé lors de cet évènement ?",
+            'label' => "Combien de contact avez-vous trouvé lors de cet évènement ?",
         ]);
         $builder->add('recruter', ChoiceType::class, [
             'choices' => [
@@ -83,7 +83,7 @@ class QuestSatType extends AbstractType
                 '9' => '9',
                 '10' => '10',
             ],
-        'label' => "Combien de collaborateurs avez-vous trouvé grace à cet évènement ?",
+            'label' => "Combien de collaborateurs avez-vous trouvé grace à cet évènement ?",
         ]);
         $builder->add('investisseur', ChoiceType::class, [
             'choices' => [
@@ -99,10 +99,10 @@ class QuestSatType extends AbstractType
                 '9' => '9',
                 '10' => '10',
             ],
-        'label' => "Combien d'investisseur(s) avez-vous trouvé grace à cet évènement ?",
+            'label' => "Combien d'investisseur(s) avez-vous trouvé grace à cet évènement ?",
         ]);
         $builder->add('comment', TextType::class, [
-        'label' => "Si vous avez des précisions pour vos réponses à nous faire partager, c'est ici :",
+            'label' => "Si vous avez des précisions pour vos réponses à nous faire partager, c'est ici :",
         ]);
         $builder->add('suggestion', TextType::class, [
             'label' => "Si vous avez des suggestions à nous faire, le clavier est à vous !",
