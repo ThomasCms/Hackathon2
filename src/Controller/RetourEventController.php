@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
 use App\Entity\RetourEvent;
 use App\Form\RetourEventType;
 use App\Repository\AnnualResult;
@@ -19,12 +20,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class RetourEventController extends AbstractController
 {
     /**
-     * @Route("/resultats", name="resultats")
+     * @Route("/resultats/{id}", name="resultats")
+     * @param Request $request
+     * @return Response
      */
-    public function resultats(Request $request): Response
+    public function resultats( Event $event, Request $request, RetourEvent $retourEvent): Response
     {
 
-        return $this->render('retour_event/resultats.html.twig');
+        return $this->render('retour_event/resultats.html.twig', ['event' => $event, 'retour' => $retourEvent]);
     }
 
     /**

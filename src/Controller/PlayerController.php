@@ -9,6 +9,8 @@
 namespace App\Controller;
 
 use App\Entity\Player;
+use App\Entity\QuestSat;
+use App\Entity\RetourEvent;
 use App\Form\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,24 +44,6 @@ class PlayerController extends AbstractController
             return $this->redirectToRoute('player', ['id' => $event->getId()]);
         }
 
-        foreach ($event->getPlayers() as $users)
-        {
-        $message = (new \Swift_Message('Hello '))
-            ->setFrom('matchmaking.wcs@gmail.com')
-            ->setTo($users->getMail())
-            ->setBody(
-                $this->renderView(
-                // templates/emails/registration.html.twig
-                    'emails/registration.html.twig',
-                    ['user' => $users,
-                        'event' => $event
-                        ]
-                ),
-                'text/html');
-        $mailer->send($message);
-        }
-
-
             return $this->render('player/index.html.twig', [
             'players' => $event->getPlayers(),
             'form' => $form->createView(),
@@ -67,13 +51,36 @@ class PlayerController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/manager/player/{id}", name="mail", requirements={"id"="\d+"}, methods="POST")
+     * @Route("/manager/player/mail/{id}", name="mail", requirements={"id"="\d+"}, methods="GET|POST")
      */
-    public function sendMail(Request $request, Event $event)
+    public function Mail(Request $request, Event $event, \Swift_Mailer $mailer): Response
     {
-        $players = $this->getDoctrine()->getRepository(Player::class)
-        ->findBy(['eventss'=> $event->getId()]);
+        $player = new Player();
+        $form = $this->createForm(PlayerType::class, $player);
+        $form->handleRequest($request);
+
+        foreach ($event->getPlayers() as $users)
+        {
+            $message = (new \Swift_Message('Hello '))
+                ->setFrom('presentationlabo@gmail.com')
+                ->setTo($users->getMail())
+                ->setBody(
+                    $this->renderView(
+                    // templates/emails/registration.html.twig
+                        'emails/registration.html.twig',
+                        ['user' => $users,
+                            'event' => $event
+                        ]
+                    ),
+                    'text/html');
+            $mailer->send($message);
+        }
+
+
+        return $this->redirectToRoute('event_index');
+
     }
 
     /**
@@ -96,5 +103,48 @@ class PlayerController extends AbstractController
         }
 
         return $this->redirectToRoute('player', ['id' => $event]);
+    }
+
+    /**
+     * @Route("/camembert/{id}", name="camembert", methods={"GET"})
+     * @param Event $event
+     * @return Response
+     */
+    public function index(Event $event, QuestSat $stats)
+    {
+
+        return $this->render('event/camembert.html.twig', ['stats' => $stats]);
+    }
+
+    /**
+     * @Route("/camembert2/{id}", name="camembert2", methods={"GET"})
+     * @param Event $event
+     * @return Response
+     */
+    public function index2(Event $event, RetourEvent $stats)
+    {
+
+        return $this->render('event/camembert2.html.twig', ['retour' => $stats]);
+    }
+
+    /**
+     * @Route("/bilan/{id}", name="bilan", methods={"GET"})
+     * @return Response
+     */
+    public function bilan(Event $event)
+    {
+        return $this->render('event/bilan.html.twig', ['event' => $event]);
+
+    }
+
+    /**
+     * @Route("/camembert3/{id}", name="camembert3", methods={"GET"})
+     * @param Event $event
+     * @return Response
+     */
+    public function index3(Event $event, RetourEvent $stats)
+    {
+
+        return $this->render('event/camembert3.html.twig', ['retour' => $stats]);
     }
 }

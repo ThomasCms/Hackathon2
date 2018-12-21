@@ -3,9 +3,32 @@
 {% block title %}Votre reporting{% endblock %}
 
 {% block body %}
+    <div class="marge">
+    <div class="mt-5">
     {% include 'retour_event/pdf.html.twig' %}
+    <div class="text-center btnGroup row">
+        <a href="{{ path('camembert2', {'id': event.id}) }}">
+            <button type="button" class="btn btn-dark bigButton"><h1>Qualité des personnes présentes</h1></button>
+        </a>
+    </div>
+    <div class="spacebetween"></div>
+    <div class="justify-content-center mt-5">
+        <a href="{{ path('camembert', {'id': event.id}) }}">
+            <button type="button" class="btn btn-warning bigButton"><h1>Mise en relation</h1></button>
+        </a>
+    </div>
 
+
+    <div class="spacebetween"></div>
+    <div class="mt-5">
+        <div class="justify-content-center">
+            <a href="{{ path('camembert3', {'id': event.id}) }}">
+                <button type="button" class="btn btn-primary bigButton"><h1>Bilan évènement</h1></button>
+            </a>
+        </div>
+    </div>
     <div class="row justify-content-center">
         <a href="{{ path('pdf_export') }}" class="btn btn-primary btn-lg">Exporter en pdf</a>
     </div>
+    </div></div>
 {% endblock %}

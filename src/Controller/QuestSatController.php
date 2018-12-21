@@ -37,7 +37,7 @@ class QuestSatController extends AbstractController
             $entityManager->persist($questSat);
             $entityManager->flush();
 
-            return $this->redirectToRoute('quest_sat_index');
+            return $this->redirectToRoute('event_index');
         }
 
         return $this->render('quest_sat/new.html.twig', [
