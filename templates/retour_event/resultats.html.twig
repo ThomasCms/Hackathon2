@@ -3,6 +3,7 @@
 {% block title %}Votre reporting{% endblock %}
 
 {% block body %}
+<div class="container">
     <div class="marge">
     <div class="mt-5">
     {% include 'retour_event/pdf.html.twig' %}
@@ -31,4 +32,5 @@
         <a href="{{ path('pdf_export') }}" class="btn btn-primary btn-lg">Exporter en pdf</a>
     </div>
     </div></div>
+    </div>
 {% endblock %}
