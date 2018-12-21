@@ -9,12 +9,13 @@
 namespace App\DataFixtures;
 
 use App\Entity\Participants;
+use App\Entity\Player;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
 
-class ParticipantsFixtures extends Fixture
+class ParticipantsFixtures extends Fixture implements DependentFixtureInterface
 {
 
     /**
@@ -25,8 +26,9 @@ class ParticipantsFixtures extends Fixture
      */
     public function getDependencies()
     {
-        // TODO: Implement getDependencies() method.
-    }
+        return [EventFixtures::class];
+
+                }
 
     /**
      * Load data fixtures with the passed EntityManager
@@ -37,15 +39,15 @@ class ParticipantsFixtures extends Fixture
     {
         $toto = Faker\Factory::create('fr_FR');
 
-        for ($i = 0; $i < 10; $i++) {
-            $part = new Participants();
-            $part->setNom(mb_strtoupper($toto->lastName));
-            $part->setPrenom(ucwords($toto->firstName));
-            $part->setEntreprise($toto->company);
-            $part->setEmail($toto->companyEmail);
-            $part->setPresence(false);
+        for ($i = 0; $i < 500; $i++) {
+            $part = new Player();
+            $part->setName(mb_strtoupper($toto->lastName));
+            $part->setFirstname(ucwords($toto->firstName));
+            $part->setPhoneNumber($toto->phoneNumber);
+            $part->setmail($toto->companyEmail);
 
             $manager->persist($part);
+            $part->addEventss($this->getReference('event_' .rand(0,9)));
         }
         $manager->flush();
     }

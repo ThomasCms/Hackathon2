@@ -11,16 +11,16 @@
     <div class="container-fluid">
 
         <div class="row mt-5">
-            <div class="offset-1 col-12">
+            <div class="col-12">
 
-        <div style="width: 75%">
+        <div style="width: 100%">
             <canvas id="myChart"></canvas>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
         <script>
             Chart.defaults.global.title.display = true;
-            Chart.defaults.global.title.text = "Origine des présences";
+            Chart.defaults.global.title.text = "REPORTING EVENTS";
         </script>
 
         <script>
@@ -29,22 +29,22 @@
 
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
-                type: 'doughnut',
+                type: 'bar',
 
                 // The data for our dataset
                 data: {
 
-                    labels: ["StartUp", "Partenaire", "PME", "Porteur de projet", 'Externe'],
+                    labels: ["Inscrit", "Présent", "Absent", "Satisfaction", 'Nombre d\'invitation'],
                     datasets: [{
                         label: "My First dataset",
                         backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
                         borderColor: 'rgb(255, 99, 132)',
                         data: [
-                            {{ retour.nbrestartupevenement }},
-                            {{ retour.nbrepartenaireevenement }},
-                            {{ retour.nbrepmeevenement }},
-                            {{ retour.nbreporteurprojetevenement }},
-                            {{ retour.nbreexternesevenement }},
+                            {{ retour.nbreinscritsevenement }},
+                            {{ retour.presentsevenement }},
+                            {{ retour.nbreinscritsevenement }}-{{ retour.presentsevenement }},
+                            {{ retour.tauxsatisfactionevenement }},
+                            {{ retour.nbremailinvitationevenement }},
                         ],
                     }]
                 },

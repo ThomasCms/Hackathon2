@@ -14,7 +14,7 @@
             <th>Date</th>
             <th>Lieu</th>
             <th>Description</th>
-            <th>actions</th>
+            <th>Action</th>
             <th>Bilan</th>
         </tr>
         </thead>
@@ -26,13 +26,10 @@
                 <td>{{ event.lieu }}</td>
                 <td>{{ event.description }}</td>
                 <td class="row">
-                    <a href="{{ path('event_edit', {'id': event.id}) }}">Editer</a>
-                    <div> /</div>
                     <a href="{{ path('player', {'id': event.id}) }}"><img src="/build/images/hacka2.2.png" class="lancement" alt="logo-lancement"></a>
                 </td>
                 <td>
-                    <a href="{{ path('camembert', {'id': event.id}) }}">Afficher</a>
-                    <a href="{{ path('camembert', {'id': event.id}) }}"><img src="/build/images/hacka2.1.png" class="affichage" alt="logo-affichage"></a>
+                    <a href="{{ path('bilan', {'id': event.id}) }}"><img src="/build/images/hacka2.1.png" class="affichage" alt="logo-affichage"></a>
                 </td>
             </tr>
         {% else %}

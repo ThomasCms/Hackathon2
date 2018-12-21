@@ -29,8 +29,8 @@ class RetourEventFixtures extends Fixture
             $product->setResultatEvenement($toto->text(10));
             $product->setLiensFormulairesEvenement($toto->text(10));
             $product->setOrigineParticipationEvenement($toto->text(10));
-            $product->setNbreMailInvitationEvenement($toto->numberBetween(10, 100));
-            $product->setTauxSatisfactionEvenement($toto->numberBetween(10, 100));
+            $product->setNbreMailInvitationEvenement($toto->numberBetween(80, 200));
+            $product->setTauxSatisfactionEvenement($toto->numberBetween(50, 100));
             $product->setSuggestionEvenement($toto->text(10));
 
             $manager->persist($product);

@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use App\Entity\Player;
 use App\Entity\QuestSat;
+use App\Entity\RetourEvent;
 use App\Form\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -113,5 +114,37 @@ class PlayerController extends AbstractController
     {
 
         return $this->render('event/camembert.html.twig', ['stats' => $stats]);
+    }
+
+    /**
+     * @Route("/camembert2/{id}", name="camembert2", methods={"GET"})
+     * @param Event $event
+     * @return Response
+     */
+    public function index2(Event $event, RetourEvent $stats)
+    {
+
+        return $this->render('event/camembert2.html.twig', ['retour' => $stats]);
+    }
+
+    /**
+     * @Route("/bilan/{id}", name="bilan", methods={"GET"})
+     * @return Response
+     */
+    public function bilan(Event $event)
+    {
+        return $this->render('event/bilan.html.twig', ['event' => $event]);
+
+    }
+
+    /**
+     * @Route("/camembert3/{id}", name="camembert3", methods={"GET"})
+     * @param Event $event
+     * @return Response
+     */
+    public function index3(Event $event, RetourEvent $stats)
+    {
+
+        return $this->render('event/camembert3.html.twig', ['retour' => $stats]);
     }
 }
