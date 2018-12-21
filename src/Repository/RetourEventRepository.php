@@ -19,32 +19,16 @@ class RetourEventRepository extends ServiceEntityRepository
         parent::__construct($registry, RetourEvent::class);
     }
 
-    // /**
-    //  * @return RetourEvent[] Returns an array of RetourEvent objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?RetourEvent
+    public function countNumberPresentsByMonth(Month $month)
     {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('bm')
+            ->andWhere('fc.category = :category')
+            ->setParameter('category', $category)
+            ->select('SUM(bm.presents_evenement) as fortunesPrinted')
+
+
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
-    */
 }

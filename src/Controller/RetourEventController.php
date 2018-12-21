@@ -12,10 +12,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/retour/event")
+ * @Route("/result")
  */
 class RetourEventController extends AbstractController
 {
+    /**
+     * @Route("/resultats", name="resultats")
+     */
+    public function resultats(Request $request): Response
+    {
+
+        return $this->render('retour_event/resultats.html.twig');
+    }
+
     /**
      * @Route("/", name="retour_event_index", methods={"GET"})
      */
@@ -89,14 +98,6 @@ class RetourEventController extends AbstractController
         return $this->redirectToRoute('retour_event_index');
     }
 
-    /**
-     * @Route("/resultat", name="retour_event_resultat")
-     */
-    public function getGraphic(AnnualResult $annualResult, RetourEventRepository $retourEventRepository) :AnnualResult
-    {
-        $total = $retourEventRepository->findAll();
-        $total->getJanvierResult();
 
-        return $this->render('/resultat.html.twig');
-    }
+
 }
