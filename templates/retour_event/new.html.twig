@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New RetourEvent{% endblock %}
+{% block title %}Nouveau reporting{% endblock %}
 
 {% block body %}
-    <h1>Create new RetourEvent</h1>
+    <h1>Créer un nouveau reporting</h1>
 
     {{ include('retour_event/_form.html.twig') }}
 
-    <a href="{{ path('retour_event_index') }}">back to list</a>
+    <a href="{{ path('retour_event_index') }}">Retour à la liste du reporting</a>
 {% endblock %}

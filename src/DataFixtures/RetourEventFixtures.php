@@ -13,7 +13,7 @@ class RetourEventFixtures extends Fixture
     {
         $toto = Faker\Factory::create('fr_FR');
         // create 1000 events! Bam!
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $product = new RetourEvent();
             $product->setIdEvenement($i);
             $product->setCategorieEvenement($toto->text);
