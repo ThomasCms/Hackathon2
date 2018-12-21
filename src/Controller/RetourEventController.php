@@ -2,20 +2,50 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
 use App\Entity\RetourEvent;
 use App\Form\RetourEventType;
 use App\Repository\AnnualResult;
 use App\Repository\RetourEventRepository;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/retour/event")
+ * @Route("/result")
  */
 class RetourEventController extends AbstractController
 {
+    /**
+     * @Route("/resultats/{id}", name="resultats")
+     * @param Request $request
+     * @return Response
+     */
+    public function resultats(Event $event, Request $request, RetourEvent $retourEvent) : Response
+    {
+        return $this->render('retour_event/resultats.html.twig', ['event' => $event, 'retour' => $retourEvent]);
+    }
+
+    /**
+     * @Route("/export-pdf", name="pdf_export")
+     * @param Pdf $knpSnappyPdf
+     * @return PdfResponse
+     */
+    public function pdfAction(Pdf $knpSnappyPdf)
+    {
+        $reporting = 'Reporting_du_';
+        /* creating the pdf from html page */
+        $html = $this->renderView('retour_event/resultatPdf.html.twig');
+
+        return new PdfResponse(
+            $knpSnappyPdf->getOutputFromHtml($html, ['user-style-sheet' => ['./build/app.css',],]),
+            $reporting . date("d-m-Y") . '.pdf'
+        );
+    }
+
     /**
      * @Route("/", name="retour_event_index", methods={"GET"})
      */
@@ -87,16 +117,5 @@ class RetourEventController extends AbstractController
         }
 
         return $this->redirectToRoute('retour_event_index');
-    }
-
-    /**
-     * @Route("/resultat", name="retour_event_resultat")
-     */
-    public function getGraphic(AnnualResult $annualResult, RetourEventRepository $retourEventRepository) :AnnualResult
-    {
-        $total = $retourEventRepository->findAll();
-        $total->getJanvierResult();
-
-        return $this->render('/resultat.html.twig');
     }
 }
