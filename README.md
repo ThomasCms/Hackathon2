@@ -14,7 +14,7 @@ la formation :
 * CSS 3
 * PHP 7
 
-### Framework
+### Frameworks
 * Bootstrap 4
 * Symfony 4 (Doctrine 2 + Twig)
 
