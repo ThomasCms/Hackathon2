@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "057ab25157c8bff24041e0669e7ec1e1",
+    "content-hash": "c3ffb55a59573254283dce281edde7f5",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -5699,16 +5699,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.2.1",
+            "version": "v4.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "c41175c801e3edfda90f32e292619d10c27103d7"
+                "reference": "34d29c2acd1ad65688f58452fd48a46bd996d5a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/c41175c801e3edfda90f32e292619d10c27103d7",
-                "reference": "c41175c801e3edfda90f32e292619d10c27103d7",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/34d29c2acd1ad65688f58452fd48a46bd996d5a6",
+                "reference": "34d29c2acd1ad65688f58452fd48a46bd996d5a6",
                 "shasum": ""
             },
             "require": {
@@ -5727,7 +5727,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -5754,7 +5754,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-11T19:52:12+00:00"
+            "time": "2019-07-24T14:47:54+00:00"
         },
         {
             "name": "twig/twig",
